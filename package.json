@@ -1,0 +1,21 @@
+{
+  "name": "pug-uses-variables",
+  "version": "0.0.1",
+  "description": "Extract variables in pug template",
+  "main": "index.js",
+  "author": "Eugene Zhlobo <ezhlobo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^21.1.0"
+  },
+  "dependencies": {
+    "babel-traverse": "^6.26.0",
+    "babylon": "^6.18.0",
+    "pug-lexer": "^3.1.0",
+    "pug-parser": "^4.0.0",
+    "pug-walk": "^1.1.5"
+  }
+}
