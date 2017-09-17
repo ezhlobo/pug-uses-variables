@@ -1,6 +1,6 @@
 {
   "name": "pug-uses-variables",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Extract variables in pug template",
   "main": "index.js",
   "author": "Eugene Zhlobo <ezhlobo@gmail.com>",
