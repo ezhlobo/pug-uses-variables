@@ -1,6 +1,6 @@
-const findVariablesInTemplate = require('../../lib/findVariablesInTemplate');
+const findVariablesInTemplate = require('../../lib/findVariablesInTemplate')
 
-const findVariables = (template) => findVariablesInTemplate(template.trim())
+const findVariables = template => findVariablesInTemplate(template.trim())
 
 describe('findVariablesInTemplate', () => {
   it('returns empty array by default', () => {
@@ -39,7 +39,7 @@ describe('findVariablesInTemplate', () => {
     const result = findVariables(`
       div
         p= text
-        p= String(textModified).replace(/\s/g, '*')
+        p= String(textModified).replace(/\\s/g, '*')
         p= object.value
         p= collectionWithString['value']
         p= collectionWithKey[key]

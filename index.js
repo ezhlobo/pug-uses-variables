@@ -1,3 +1,5 @@
+const findVariablesInTemplate = require('./lib/findVariablesInTemplate')
+
 module.exports = {
-  findVariablesInTemplate: require('./lib/findVariablesInTemplate'),
+  findVariablesInTemplate,
 }
