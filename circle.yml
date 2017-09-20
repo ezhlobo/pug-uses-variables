@@ -17,4 +17,4 @@ test:
     - yarn lint
 
   override:
-    - yarn test
+    - yarn test -- --runInBand
