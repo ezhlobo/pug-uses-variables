@@ -15,6 +15,7 @@ describe('findVariablesInTemplate', () => {
   it('returns used variables within attributes', () => {
     const result = findVariables(`
       div(
+        justBoolean
         attribute=attribute
         text="string"
         single-quote='text'
