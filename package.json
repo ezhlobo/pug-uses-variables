@@ -1,14 +1,25 @@
 {
   "name": "pug-uses-variables",
   "version": "0.0.2",
-  "description": "Extract variables in pug template",
-  "main": "index.js",
   "author": "Eugene Zhlobo <ezhlobo@gmail.com>",
-  "license": "MIT",
+  "description": "Extract variables from pug template",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
     "test": "jest --runInBand"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ezhlobo/pug-uses-variables"
+  },
+  "homepage": "https://github.com/ezhlobo/pug-uses-variables",
+  "bugs": "https://github.com/ezhlobo/pug-uses-variables/issues",
   "dependencies": {
     "babel-traverse": "^6.26.0",
     "babylon": "^6.18.0",
@@ -26,5 +37,14 @@
     "extends": [
       "./eslintrc.js"
     ]
-  }
+  },
+  "keywords": [
+    "pug",
+    "pug-template",
+    "ast",
+    "react",
+    "library",
+    "babel"
+  ],
+  "license": "MIT"
 }
