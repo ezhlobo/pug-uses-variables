@@ -20,6 +20,7 @@ describe('findVariablesInTemplate', () => {
         text="string"
         single-quote='text'
         bool=true
+        func=executedFunction('text', argInExecutedFunction)
       )
         span(
           nested=nested
@@ -30,7 +31,8 @@ describe('findVariablesInTemplate', () => {
         )
     `)
     const expected = [
-      'attribute', 'nested', 'objName', 'objString', 'objKey', 'key', 'wrapped',
+      'attribute', 'executedFunction', 'argInExecutedFunction', 'nested', 'objName', 'objString',
+      'objKey', 'key', 'wrapped',
     ]
 
     expect(result).toEqual(expected)
@@ -45,10 +47,12 @@ describe('findVariablesInTemplate', () => {
         p= collectionWithString['value']
         p= collectionWithKey[key]
         = paragraph
+        = executedFunc()
+        = executedFuncWithArgs(argInExecutedFunc)
     `)
     const expected = [
       'text', 'String', 'textModified', 'object', 'collectionWithString', 'collectionWithKey',
-      'key', 'paragraph',
+      'key', 'paragraph', 'executedFunc', 'executedFuncWithArgs', 'argInExecutedFunc',
     ]
 
     expect(result).toEqual(expected)
@@ -62,9 +66,17 @@ describe('findVariablesInTemplate', () => {
 
         if conditionWithVariable === truthyOrFalsy
           p renders second condition
+
+        if leftExecutedFunction() === rightExecutedFunction(argInRightExecutedFunc)
+          p renderes third condition
     `)
     const expected = [
-      'conditionWithBool', 'conditionWithVariable', 'truthyOrFalsy',
+      'conditionWithBool',
+      'conditionWithVariable',
+      'truthyOrFalsy',
+      'leftExecutedFunction',
+      'rightExecutedFunction',
+      'argInRightExecutedFunc',
     ]
 
     expect(result).toEqual(expected)
