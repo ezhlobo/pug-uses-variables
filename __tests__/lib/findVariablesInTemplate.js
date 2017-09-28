@@ -111,4 +111,15 @@ describe('findVariablesInTemplate', () => {
 
     expect(result).toEqual(expected)
   })
+
+  it('handles object spread operator to support jsx', () => {
+    const result = findVariables(`
+      Component(...field ...props[value])
+    `)
+    const expected = [
+      'Component', 'field', 'props', 'value',
+    ]
+
+    expect(result).toEqual(expected)
+  })
 })
