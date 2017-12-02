@@ -111,6 +111,25 @@ describe('findVariablesInTemplate', () => {
     expect(result).toEqual(expected)
   })
 
+  it('returns variables from interpolation', () => {
+    const result = findVariables(`
+      div
+        p.
+          Text #{var1} #{var2}
+          Hello #{var3}
+
+        p Text #{var4}
+
+        - const var5 = 'var5'
+        p Text #{var5}
+    `)
+    const expected = [
+      'var1', 'var2', 'var3', 'var4',
+    ]
+
+    expect(result).toEqual(expected)
+  })
+
   it('handles object spread operator to support jsx', () => {
     const result = findVariables(`
       Component(...field ...props[value])
