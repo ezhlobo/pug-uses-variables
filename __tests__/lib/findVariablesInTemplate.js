@@ -94,7 +94,7 @@ describe('findVariablesInTemplate', () => {
         p= item
     `)
     const expected = [
-      'collection', 'filterFunc', 'item', 'item', 'a', 'item',
+      'collection', 'filterFunc', 'item', 'a',
     ]
 
     expect(result).toEqual(expected)
@@ -121,5 +121,13 @@ describe('findVariablesInTemplate', () => {
     ]
 
     expect(result).toEqual(expected)
+  })
+
+  it('does not return duplicates of variables', () => {
+    const result = findVariables(`
+      div(attribute=value)= value
+    `)
+
+    expect(result).toEqual(['value'])
   })
 })
