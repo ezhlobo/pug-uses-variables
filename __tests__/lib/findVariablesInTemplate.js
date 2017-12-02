@@ -82,7 +82,6 @@ describe('findVariablesInTemplate', () => {
     expect(result).toEqual(expected)
   })
 
-  // @TODO: Need to remove `a` and duplicated `item` from used variables
   it('returns used variables in loops', () => {
     const result = findVariables(`
       div
@@ -94,7 +93,7 @@ describe('findVariablesInTemplate', () => {
         p= item
     `)
     const expected = [
-      'collection', 'filterFunc', 'item', 'a',
+      'collection', 'filterFunc', 'item',
     ]
 
     expect(result).toEqual(expected)
@@ -129,5 +128,41 @@ describe('findVariablesInTemplate', () => {
     `)
 
     expect(result).toEqual(['value'])
+  })
+
+  it('does not return variables from defined scope inside pug', () => {
+    const result = findVariables(`
+      div
+        - const test = 'this var should not be returned'
+        - const value = 'this var should not ve returned'
+        div(attribute=test)= test
+        div(attribute=value)= value
+
+        div
+          - const nestedVariable = 'nestedVariable'
+          - const nestedVariableFake = 'this var should not ve returned'
+          div
+            - const doubleNestedVariable = 'doubleNestedVariable'
+            div= nestedVariableFake
+        p= nestedVariable
+        p= doubleNestedVariable
+
+        each item, index in collection
+          p= item
+          p= index
+          p= value
+          p= outsideVariable
+
+        - const inCondition = true
+        if true === inCondition
+          p= value
+
+        p= item
+    `)
+    const expected = [
+      'nestedVariable', 'doubleNestedVariable', 'collection', 'outsideVariable', 'item',
+    ]
+
+    expect(result).toEqual(expected)
   })
 })
