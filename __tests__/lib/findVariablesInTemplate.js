@@ -1,6 +1,6 @@
 const findVariablesInTemplate = require('../../lib/findVariablesInTemplate')
 
-const findVariables = template => findVariablesInTemplate(template.trim())
+const findVariables = template => findVariablesInTemplate(template.trimRight())
 
 describe('findVariablesInTemplate', () => {
   it('returns empty array by default', () => {
@@ -181,6 +181,23 @@ describe('findVariablesInTemplate', () => {
     const expected = [
       'nestedVariable', 'doubleNestedVariable', 'collection', 'outsideVariable', 'item',
     ]
+
+    expect(result).toEqual(expected)
+  })
+
+  it('handles more than one root', () => {
+    const result = findVariables(`
+      if true
+        = first
+
+      else if false
+        = second
+
+      else
+        = third
+    `)
+
+    const expected = ['first', 'second', 'third']
 
     expect(result).toEqual(expected)
   })
