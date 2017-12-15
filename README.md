@@ -19,11 +19,13 @@ const pugTemplate = `
     if condition === matcher
       p Truthy
     
-`.trim()
+`.trimRight()
 
 const variables = findVariablesInTemplate(pugTemplate)
 // is equal ['ReactComponent', 'object', 'item', 'content', 'condition', 'matcher']
 ```
+
+**Important**: templates should be right-trimmed. Usually it means that you have to execute `.trimRight` on your template-string as in the example above.
 
 ## Value
 
