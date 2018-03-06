@@ -23,7 +23,7 @@
   "dependencies": {
     "babel-traverse": "^6.26.0",
     "babylon": "^6.18.0",
-    "pug-lexer": "^3.1.0"
+    "pug-lexer": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^4.6.0",
