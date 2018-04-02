@@ -19,6 +19,7 @@ module.exports = {
       classes: 'never',
       switches: 'never',
     }],
+    'prefer-destructuring': 'off',
     semi: ['error', 'never'],
   },
 }
