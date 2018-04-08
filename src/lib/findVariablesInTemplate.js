@@ -1,8 +1,8 @@
-const lexer = require('pug-lexer')
-const visitors = require('./visitors')
-const State = require('./state')
+import lexer from 'pug-lexer'
+import visitors from './visitors'
+import State from './State'
 
-const findVariablesInTemplate = (template) => {
+export default function findVariablesInTemplate(template) {
   if (template) {
     const tokens = lexer(template)
     const state = new State()
@@ -14,5 +14,3 @@ const findVariablesInTemplate = (template) => {
 
   return []
 }
-
-module.exports = findVariablesInTemplate

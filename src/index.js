@@ -1,5 +1,3 @@
-const findVariablesInTemplate = require('./lib/findVariablesInTemplate')
+/* eslint-disable import/prefer-default-export */
 
-module.exports = {
-  findVariablesInTemplate,
-}
+export { default as findVariablesInTemplate } from './lib/findVariablesInTemplate'

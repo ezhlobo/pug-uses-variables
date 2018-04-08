@@ -1,5 +1,5 @@
-const parseAndFindVarsInProgram = require('../helpers/parseAndFindVarsInProgram')
-const { buildVariable, findVariable } = require('../helpers/variables')
+import parseAndFindVarsInProgram from '../helpers/parseAndFindVarsInProgram'
+import { buildVariable, findVariable } from '../helpers/variables'
 
 function isComponent(string) {
   return /^[A-Z].*$/.test(string)
@@ -9,7 +9,7 @@ function isSpreadOperator(string) {
   return /^\.{3}[A-z]+$/.test(string)
 }
 
-module.exports = function visitors(state, token, template) {
+export default function visitors(state, token, template) {
   const location = token.loc
   const source = template.split('\n').slice(location.start.line - 1, location.end.line)
 

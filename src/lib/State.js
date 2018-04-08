@@ -1,4 +1,4 @@
-const pushUniqueVariable = require('../helpers/pushUniqueVariable')
+import pushUniqueVariable from '../helpers/pushUniqueVariable'
 
 function getVariablesInContext(context, column) {
   return Object.keys(context)
@@ -7,7 +7,7 @@ function getVariablesInContext(context, column) {
     .reduce((flattenArray, array) => flattenArray.concat(array), [])
 }
 
-module.exports = class State {
+export default class State {
   constructor() {
     // Array of variable Nodes
     this.variables = []
