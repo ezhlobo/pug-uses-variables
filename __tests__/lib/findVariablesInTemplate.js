@@ -1,5 +1,5 @@
 const findVariablesInTemplate = require('../../lib/findVariablesInTemplate')
-const buildVariable = require('../../lib/buildVariable')
+const { buildVariable } = require('../../helpers/variables')
 
 const findVariables = template => findVariablesInTemplate(template.trimRight())
 
