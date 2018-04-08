@@ -15,6 +15,7 @@ dependencies:
 test:
   pre:
     - yarn lint
+    - yarn flow
 
   override:
     - yarn test -- --runInBand

@@ -7,13 +7,13 @@
   "scripts": {
     "build": "rm -rf ./build && babel src -d dist",
     "lint": "eslint ./",
+    "flow": "flow",
     "test": "jest"
   },
   "files": [
     "LICENSE",
     "README.md",
-    "dist",
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -29,11 +29,15 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "eslint": "^4.6.0",
     "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.7.0",
+    "flow-bin": "^0.69.0",
     "jest": "^22.2.2"
   },
   "eslintConfig": {
@@ -42,7 +46,8 @@
     ]
   },
   "eslintIgnore": [
-    "dist"
+    "dist",
+    "flow-typed"
   ],
   "keywords": [
     "pug",
