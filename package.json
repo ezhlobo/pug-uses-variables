@@ -5,6 +5,7 @@
   "description": "Extract variables from pug template",
   "main": "dist/index.js",
   "scripts": {
+    "prepublish": "yarn build",
     "build": "rm -rf ./build && babel src -d dist",
     "lint": "eslint ./",
     "flow": "flow",
