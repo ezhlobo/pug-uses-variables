@@ -1,4 +1,4 @@
-const { findVariablesInTemplate } = require('../src/index')
+import { findVariablesInTemplate } from '../src/index'
 
 describe('main', () => {
   it('exports "findVariablesInTemplate"', () => {

@@ -1,11 +1,11 @@
-const babylon = require('babylon')
-const codeWalk = require('babel-traverse').default
-const pushUniqueVariable = require('./pushUniqueVariable')
+import { parse } from 'babylon'
+import codeWalk from 'babel-traverse'
+import pushUniqueVariable from './pushUniqueVariable'
 
-function parseAndFindVarsInProgram(program) {
+export default function parseAndFindVarsInProgram(program) {
   let usedVariables = []
   let definedVariables = []
-  const code = babylon.parse(program, {
+  const code = parse(program, {
     plugins: [
       'objectRestSpread',
     ],
@@ -26,5 +26,3 @@ function parseAndFindVarsInProgram(program) {
     defined: definedVariables,
   }
 }
-
-module.exports = parseAndFindVarsInProgram

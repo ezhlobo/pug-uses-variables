@@ -12,7 +12,8 @@
   "files": [
     "LICENSE",
     "README.md",
-    "dist"
+    "dist",
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -26,7 +27,9 @@
     "pug-lexer": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
     "babel-cli": "^6.26.0",
+    "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.6.0",
     "eslint-config-airbnb-base": "^12.0.0",
@@ -38,7 +41,9 @@
       "./eslintrc.js"
     ]
   },
-  "eslintIgnore": ["dist"],
+  "eslintIgnore": [
+    "dist"
+  ],
   "keywords": [
     "pug",
     "pug-template",
