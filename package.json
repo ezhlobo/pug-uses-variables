@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "author": "Eugene Zhlobo <ezhlobo@gmail.com>",
   "description": "Extract variables from pug template",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rm -rf ./build && babel src -d dist",
     "lint": "eslint ./",
     "test": "jest"
   },
   "files": [
     "LICENSE",
     "README.md",
-    "index.js",
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
     "pug-lexer": "^4.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "eslint": "^4.6.0",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -36,6 +38,7 @@
       "./eslintrc.js"
     ]
   },
+  "eslintIgnore": ["dist"],
   "keywords": [
     "pug",
     "pug-template",
