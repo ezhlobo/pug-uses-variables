@@ -1,8 +1,10 @@
+// @flow
+
 import lexer from 'pug-lexer'
 import visitors from './visitors'
 import State from './State'
 
-export default function findVariablesInTemplate(template) {
+export default function findVariablesInTemplate(template: string): VariableList {
   if (template) {
     const tokens = lexer(template)
     const state = new State()

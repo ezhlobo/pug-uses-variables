@@ -1,4 +1,8 @@
-export function buildVariable(name, startCoord, endCoord) {
+// @flow
+
+type Coord = [number, number]
+
+export function buildVariable(name: string, startCoord: Coord, endCoord: Coord): Variable {
   return {
     value: name,
     loc: {
@@ -14,7 +18,7 @@ export function buildVariable(name, startCoord, endCoord) {
   }
 }
 
-export function findVariable(name, location, source) {
+export function findVariable(name: string, location: SourceLocation, source: Array<string>): Variable {
   const line = location.start.line
   const valueStartsAt = location.start.column
   const columnStart = valueStartsAt + source[0].substring(valueStartsAt).indexOf(name)

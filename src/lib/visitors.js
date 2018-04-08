@@ -1,15 +1,19 @@
+// @flow
+
 import parseAndFindVarsInProgram from '../helpers/parseAndFindVarsInProgram'
 import { buildVariable, findVariable } from '../helpers/variables'
 
-function isComponent(string) {
-  return /^[A-Z].*$/.test(string)
+import type State from './State'
+
+function isComponent(input: string): boolean {
+  return /^[A-Z].*$/.test(input)
 }
 
-function isSpreadOperator(string) {
-  return /^\.{3}[A-z]+$/.test(string)
+function isSpreadOperator(input: string): boolean {
+  return /^\.{3}[A-z]+$/.test(input)
 }
 
-export default function visitors(state, token, template) {
+export default function visitors(state: State, token: Token, template: string) {
   const location = token.loc
   const source = template.split('\n').slice(location.start.line - 1, location.end.line)
 
