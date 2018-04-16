@@ -29,6 +29,9 @@ describe('findVariablesInTemplate', () => {
           as-object-string=objString['val']
           as-object-var=objKey[key]
           wrapped=(wrapped)
+          plain-array=[ plainArrayOne, plainArrayTwo ]
+          plain-object={ one: plainObjectOne, two: plainObjectTwo }
+          function=() => alert(withinFunction)
         )
     `)
     const expected = [
@@ -41,6 +44,12 @@ describe('findVariablesInTemplate', () => {
       buildVariable('objKey', [14, 24], [14, 30]),
       buildVariable('key', [14, 31], [14, 34]),
       buildVariable('wrapped', [15, 19], [15, 26]),
+      buildVariable('plainArrayOne', [16, 24], [16, 37]),
+      buildVariable('plainArrayTwo', [16, 39], [16, 52]),
+      buildVariable('plainObjectOne', [17, 30], [17, 44]),
+      buildVariable('plainObjectTwo', [17, 51], [17, 65]),
+      buildVariable('alert', [18, 25], [18, 30]),
+      buildVariable('withinFunction', [18, 31], [18, 45]),
     ]
 
     expect(result).toEqual(expected)

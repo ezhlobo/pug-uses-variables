@@ -13,6 +13,28 @@ function isSpreadOperator(input: string): boolean {
   return /^\.{3}[A-z]+$/.test(input)
 }
 
+function doesStringLookLikeObject(string: string): boolean {
+  return /^\s*{/.test(string)
+}
+
+function normalizeAttributeValue(token: Token): string {
+  // `({ ...props })` is a valid code when `...props` is not, so we
+  // are making this normalization to avoid syntax errors
+  if (isSpreadOperator(token.name)) {
+    return `({${token.name}})`
+  }
+
+  // Just an object (like `{ first: 'one' }`) is not valid string to
+  // be parsed by babel, so we need to wrap it by braces
+  if (typeof token.val === 'string' && doesStringLookLikeObject(token.val)) {
+    return `(${token.val})`
+  }
+
+  // Pug can return a boolean variable for attribute value, but babel
+  // can parses only strings
+  return String(token.val)
+}
+
 export default function visitors(state: State, token: Token, template: string) {
   const location = token.loc
   const source = template.split('\n').slice(location.start.line - 1, location.end.line)
@@ -35,13 +57,7 @@ export default function visitors(state: State, token: Token, template: string) {
     }
 
     case 'attribute': {
-      const normalizedValue = isSpreadOperator(token.name)
-        // `({ ...props })` is a valid code when `...props` is not, so we
-        // are making this normalization to avoid syntax errors
-        ? `({${token.name}})`
-        // Pug can return a boolean variable for attribute value, but babel
-        // can parses only strings
-        : String(token.val)
+      const normalizedValue = normalizeAttributeValue(token)
 
       const usedVariables = parseAndFindVarsInProgram(normalizedValue)
         .used
