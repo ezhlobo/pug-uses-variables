@@ -1,7 +1,7 @@
 // @flow
 
-import { parse } from 'babylon'
-import codeWalk from 'babel-traverse'
+import { parse } from '@babel/parser'
+import traverse from '@babel/traverse'
 import pushUniqueVariable from './pushUniqueVariable'
 
 export default function parseAndFindVarsInProgram(program: string): {
@@ -16,7 +16,7 @@ export default function parseAndFindVarsInProgram(program: string): {
     ],
   })
 
-  codeWalk(code, {
+  traverse(code, {
     Program(path: Object) {
       const varsDefined: Array<string> = Object.keys(path.scope.bindings)
       const varsInGlobal: Array<string> = Object.keys(path.scope.globals)

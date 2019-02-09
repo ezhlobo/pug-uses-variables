@@ -23,23 +23,23 @@
   "homepage": "https://github.com/ezhlobo/pug-uses-variables",
   "bugs": "https://github.com/ezhlobo/pug-uses-variables/issues",
   "dependencies": {
-    "babel-traverse": "^6.26.0",
-    "babylon": "^6.18.0",
+    "@babel/parser": "^7.3.2",
+    "@babel/traverse": "^7.2.3",
     "pug-lexer": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.44",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-jest": "^23.0.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-flow": "^6.23.0",
-    "eslint": "^4.6.0",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-flowtype": "^2.49.3",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-flowtype": "^3.2.1",
     "eslint-plugin-import": "^2.7.0",
-    "flow-bin": "^0.75.0",
-    "jest": "^22.2.2"
+    "flow-bin": "^0.92.1",
+    "jest": "^24.1.0"
   },
   "eslintConfig": {
     "extends": [
