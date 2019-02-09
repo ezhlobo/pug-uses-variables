@@ -10,7 +10,7 @@ function isComponent(input: string): boolean {
 }
 
 function isSpreadOperator(input: string): boolean {
-  return /^\.{3}[A-z]+$/.test(input)
+  return /^\.{3}[A-z0-9$]+(\.[A-z0-9$]+)*$/.test(input)
 }
 
 function doesStringLookLikeObject(string: string): boolean {

@@ -165,16 +165,24 @@ describe('findVariablesInTemplate', () => {
     expect(result).toEqual(expected)
   })
 
-  fit('handles object spread operator to support jsx', () => {
+  it('handles object spread operator to support jsx', () => {
     const result = findVariables(`
-      Component(...field ...props[value] ...object.property)
+      Component(
+        ...field
+        ...props[value]
+        ...object.property
+        ...withSymbols_0123456789$
+        ...withSymbolsAndProperty_0123456789$._0123456789$
+      )
     `)
     const expected = [
       buildVariable('Component', [2, 6], [2, 15]),
-      buildVariable('field', [2, 19], [2, 24]),
-      buildVariable('props', [2, 28], [2, 33]),
-      buildVariable('value', [2, 34], [2, 39]),
-      buildVariable('object', [2, 44], [2, 50]),
+      buildVariable('field', [3, 11], [3, 16]),
+      buildVariable('props', [4, 11], [4, 16]),
+      buildVariable('value', [4, 17], [4, 22]),
+      buildVariable('object', [5, 11], [5, 17]),
+      buildVariable('withSymbols_0123456789$', [6, 11], [6, 34]),
+      buildVariable('withSymbolsAndProperty_0123456789$', [7, 11], [7, 45]),
     ]
 
     expect(result).toEqual(expected)
