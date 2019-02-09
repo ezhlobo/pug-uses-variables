@@ -272,4 +272,21 @@ describe('findVariablesInTemplate', () => {
 
     expect(result).toEqual(expected)
   })
+
+  it('returns functions', () => {
+    const result = findVariables(`
+      div
+        = first('one')
+
+        each item in [1, 2]
+          = second(item)
+    `)
+
+    const expected = [
+      buildVariable('first', [3, 10], [3, 15]),
+      buildVariable('second', [6, 12], [6, 18]),
+    ]
+
+    expect(result).toEqual(expected)
+  })
 })
