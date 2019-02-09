@@ -288,12 +288,17 @@ describe('findVariablesInTemplate', () => {
         = first('one')
 
         each item in [1, 2]
-          = second(item)
+          = second(item, another)
+
+        - const staticVariable = 'String'
+        - const newVariable = getVariable(staticVariable)
     `)
 
     const expected = [
       buildVariable('first', [3, 10], [3, 15]),
       buildVariable('second', [6, 12], [6, 18]),
+      buildVariable('another', [6, 25], [6, 32]),
+      buildVariable('getVariable', [9, 30], [9, 41]),
     ]
 
     expect(result).toEqual(expected)
