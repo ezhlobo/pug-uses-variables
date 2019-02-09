@@ -16,6 +16,7 @@ function getVariablesInContext(context: Context, column: number) {
 
 export default class State {
   variables: VariableList
+
   context: Context
 
   constructor() {
