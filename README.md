@@ -1,7 +1,5 @@
 # pug-uses-variables [![circleci](https://circleci.com/gh/ezhlobo/pug-uses-variables/tree/master.svg)](https://circleci.com/gh/ezhlobo/pug-uses-variables/tree/master)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ezhlobo/pug-uses-variables.svg)](https://greenkeeper.io/)
-
 Find all JavaScript variables used in pug template.
 
 ## Usage
