@@ -20,7 +20,7 @@ export function buildVariable(name: string, startCoord: Coord, endCoord: Coord):
 
 export function findVariable(name: string, location: SourceLocation, source: Array<string>): Variable {
   const line = location.start.line
-  const valueStartsAt = location.start.column
+  const valueStartsAt = location.start.column - 1
   const columnStart = valueStartsAt + source[0].substring(valueStartsAt).indexOf(name)
   const columnEnd = columnStart + name.length
 

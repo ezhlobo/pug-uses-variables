@@ -131,6 +131,7 @@ describe('findVariablesInTemplate', () => {
     const result = findVariables(`
       Header(key=item.id)
         Nested(attr=text)= value
+      Box Hello from Box's child
     `)
     const expected = [
       buildVariable('Header', [2, 6], [2, 12]),
@@ -138,6 +139,7 @@ describe('findVariablesInTemplate', () => {
       buildVariable('Nested', [3, 8], [3, 14]),
       buildVariable('text', [3, 20], [3, 24]),
       buildVariable('value', [3, 27], [3, 32]),
+      buildVariable('Box', [4, 6], [4, 9]),
     ]
 
     expect(result).toEqual(expected)
